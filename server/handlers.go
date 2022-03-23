@@ -311,7 +311,8 @@ func (s *Server) handleConnectorLogin(w http.ResponseWriter, r *http.Request) {
 			if err := s.templates.password(r, w, r.URL.String(), username, usernamePrompt(passwordConnector), true, showBacklink); err != nil {
 				s.logger.Errorf("Server template error: %v", err)
 			}
-			s.logger.Errorf("Failed login attempt for user: %q. Invalid login credentials.", username)
+			//s.logger.Errorf("Failed login attempt for user: %q. Invalid login credentials.", username)
+			s.logger.Infof("Failed login attempt for user: %q. Invalid login credentials.", username)
 			return
 		}
 		redirectURL, err := s.finalizeLogin(identity, authReq, conn.Connector)
